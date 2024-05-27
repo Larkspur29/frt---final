@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Doctor Bot</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/fav-icon.png') }}" type="image/x-icon">
+        <link rel="stylesheet" href="{{ url_for('static', filename='cs1/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='cs1/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='cs1/style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Teko|Damion|Chivo|Roboto:400,700|Abel" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js1/html5shiv.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js1/respond.min.js') }}"></script>
+        <style>
+            body{
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size:14px;
+            color:#888;
+        }
+        </style>
+    </head>
+    <body>
+        <br>
+        
+        
+        {% block content %} {% endblock %}
+    <script src="{{ url_for('static', filename='js1/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js1/jquery.rwdImageMaps.js') }}"></script>
+    <script src="{{ url_for('static', filename='js1/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js1/plugin.js') }}"></script>
+    <script src="{{ url_for('static', filename='js1/jquery.nicescroll.min.js') }}"></script>
+    
+</body>
+</html>

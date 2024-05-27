@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<div class="diag">
+  <div class="container">
+    
+    <div class="header">
+      <h3>May require medical attention</h3>
+      <ul>
+        <li>This System is for informational purposes only, and is not intended to constitute professional medical advice, diagnosis or treatment.</li>
+        <li>Consulting a medical professional soon is advised.</li>
+      </ul>
+    </div>
+
+      <div class="diagnosis">
+        <h3>Result</h3>
+        <p>Please note that the list below may not be complete and is provided solely for informational purposes and is not a qualified medical opinion.</p>
+        <h3>Based on you symptoms:</h3> {% for s in symptoms %} <span class="user-symps">{{s}}</span> {% endfor %}
+
+        <hr>
+        <div class="disease-info">
+          <p>Click any disease for details:</p>
+          
+          {% for d in diseases %}
+          <div class="disease">
+            <h4 class="iamDisease">{{d}}</h4>
+            {% if diseasesInfo[loop.index0] != false %}
+              <div class="diseses-data" >
+                  <i class='fa fa-close closeDis'></i>
+                <h3 class="dis-name">{{diseasesInfo[loop.index0][1]}}</h3>
+                <div class="dis-disc">
+                    <h4>Discreption:</h4>
+                    <p>{{diseasesInfo[loop.index0][2]}}</p>    
+                </div>
+                <hr>
+                <div class="dis-organ">
+                    <h4>Doctor specialized in {{diseasesInfo[loop.index0][4]}} is called: </h4><p>{{specialist}}</p>
+                </div>
+                <hr>
+                <div class="dis-sym">
+                    <h4>Matched Symptoms: </h4>
+                    {% for ds in diseasesSyms[loop.index0] %}
+                      {% if ds in symptoms %}
+                        <p>- {{ds}}</p>
+                      {% endif %}
+                    {% endfor %}
+                </div>
+                <hr>
+                <div class="dis-deg">
+                    <h4>Degree of dangerous: </h4>
+                    {% if diseasesInfo[loop.index0][3] == 'H' %}
+                      <h5 style="color:#5cf143;">High <span>(Prompt medical attention recommended)</span></h5>
+                    {% elif diseasesInfo[loop.index0][3] == 'M' %}
+                      <h5 style="color: #fd9941;">Medium <span>(Medical attention recommended)</span></h5>
+                    {% else %}
+                      <h5 style="color:#ff6f6f;">Low <span>(Medical attention not needed)</span></h5>
+                    {% endif %}
+                </div>
+                <hr>
+                <div class="dis-tips">
+                  <h4>Tips: </h4> <a href="{{diseasesTips[loop.index0]}}" target="_blank">Click me to get some tips about this disease.</a>
+                </div>
+              </div>
+              {% endif %}
+              {% if percent[loop.index0] > 60 %}
+              <h5 style="color:#ff6f6f;">Strong evidence <span>({{percent[loop.index0]}}%)</span></h5>
+              {% elif percent[loop.index0] > 30 %}
+              <h5 style="color: #fd9941;">Moderate evidence <span>({{percent[loop.index0]}}%)</span></h5>
+              {% else %}
+              <h5 style="color:#5cf143;">Week evidence <span>({{percent[loop.index0]}}%)</span></h5>
+              {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <button style="display: block; margin: 0 auto;" class="btn btn-primary">
+        <a href="/">Home</a>
+    </button>
+      
+
+      
+
+      <div class="header">
+        <p>Please note that the information provided by this tool is provided solely for educational purposes and is not a qualified medical opinion. This information should not be considered advice or an opinion of a doctor or other health professional about your actual medical state, and you should see a doctor for any symptoms you may have. If you are experiencing a health emergency, you should call your local emergency number immediately to request emergency medical assistance.</p>
+      </div>
+
+  </div>
+</div>
+
+
+{% endblock content %}
