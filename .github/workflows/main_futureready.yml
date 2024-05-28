@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - FutureReady
+name: Build and deploy Python app to Azure Web App - futureready
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Create and start virtual environment
         run: |
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_786F46F1130443CC885697DC85650487 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6C36904E91214CAF83DA1D931F8C385F }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_12F2022615B24888A8D217DA73AF49DB }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_009E24140DC5487F98BB359CB898B5FE }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E74AACDD7EB44AF88A34B5ECB587ABCA }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F889F7BAAEE24ED5911E337F4AEA4F3A }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'FutureReady'
+          app-name: 'futureready'
           slot-name: 'Production'
           
